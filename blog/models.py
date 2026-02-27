@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
+# Canonical URL
+from django.urls import reverse
 
 # Para mostrar post publicados y no draft
 class PublishedManager(models.Manager):
@@ -43,3 +45,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    #canonical url
+    def get_absolute_url(self):
+        return reverse(
+            'blog:post_detail',
+            args=[self.id]
+        )
