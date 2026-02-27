@@ -33,7 +33,7 @@ class Post(models.Model):
 # Para mostrar post publicados y no draft
     
     objects = models.Manager()
-    published = PublishedManager
+    published = PublishedManager()
 
     class Meta:
         ordering = ['-publish'] #descendente
